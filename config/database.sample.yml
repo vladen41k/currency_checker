@@ -1,0 +1,15 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: your_name
+  password: your_password
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: currency_checker_development
+test:
+  <<: *default
+  database: currency_checker_test
