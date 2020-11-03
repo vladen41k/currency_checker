@@ -68,10 +68,21 @@ GEM
     builder (3.2.4)
     byebug (11.1.3)
     concurrent-ruby (1.1.7)
+    connection_pool (2.2.3)
     crass (1.0.6)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
+    e2mmap (0.1.0)
     erubi (1.9.0)
+    et-orbi (1.2.4)
+      tzinfo
     execjs (2.7.0)
     ffi (1.13.1)
+    fugit (1.3.8)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.5)
@@ -105,6 +116,7 @@ GEM
     popper_js (1.16.0)
     puma (4.3.6)
       nio4r (~> 2.0)
+    raabro (1.3.1)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -140,6 +152,9 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.2)
+    rufus-scheduler (3.6.0)
+      fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -150,6 +165,17 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sidekiq (6.1.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sidekiq-scheduler (3.0.1)
+      e2mmap
+      redis (>= 3, < 5)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 3)
+      thwait
+      tilt (>= 1.4.0)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -171,6 +197,8 @@ GEM
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
+    thwait (0.2.0)
+      e2mmap
     tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -198,13 +226,17 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap (~> 5.0.0.alpha1)
   byebug
+  dotenv-rails
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  redis
   sass-rails (>= 6)
+  sidekiq
+  sidekiq-scheduler
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
