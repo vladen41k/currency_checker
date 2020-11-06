@@ -1,0 +1,15 @@
+.container
+  header.row
+    .col.text-center.pt-3
+      .text-left.pa
+        = link_to 'root', root_path, title: 'Перейти на главную страницу', class: 'text-left'
+      #message
+  .row.mt-5
+    .col
+    .col
+      = form_with url: "/admins/update", method: :patch, scope: :admin, id: 'update_rate_form', remote: true do |form|
+        = form.text_field :rate, required: true, class: 'form-control form-control-lg mt-1', value: @changed_rate
+        = form.datetime_local_field :date, required: true, class: 'form-control form-control-lg mt-1', value: @date
+        .text-center
+          = form.submit "Отправить", class: "btn btn-primary text-center mt-1"
+    .col

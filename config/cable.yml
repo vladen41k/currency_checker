@@ -1,10 +1,23 @@
+#development:
+#  adapter: async
+
+#test:
+#  adapter: test
+
+#production:
+#  adapter: redis
+#  url: <%#= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+#  channel_prefix: currency_checker_production
+
+
 development:
-  adapter: async
+  adapter: redis
+  url: redis://localhost:6379/1
 
 test:
-  adapter: test
+  adapter: redis
+  url: redis://localhost:6379/1
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: currency_checker_production
+  url: redis://localhost:6379/1

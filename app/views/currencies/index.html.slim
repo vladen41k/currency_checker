@@ -1,0 +1,15 @@
+.container
+  = link_to 'admin', u_admin_path, title: 'Перейти на админку'
+  .row.current_rate_main
+    .col
+    .col
+      .card.text-center[style="width: 18rem;"]
+        .card-body
+          h5.card-title
+            | Current Rate
+        .card-body
+          p.card-text#rate
+            | 1 USD /&nbsp
+            = @rate
+            | &nbsp RUB
+    .col

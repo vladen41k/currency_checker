@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :currencies, only: %i[index]
+  root to: 'currencies#index'
 
+  get 'u/admin', to: 'admins#index'
+  patch 'admins/update', to: 'admins#update'
 end

@@ -1,0 +1,3 @@
+:schedule:
+  CheckRateJob:
+    every: '1m'
