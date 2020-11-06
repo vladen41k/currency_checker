@@ -1,24 +1,12 @@
 class AdminsController < ApplicationController
+  before_action :rate_and_date, only: %i[index]
 
-  def index
-    @changed_rate = Redis.current.get('changed_rate')
-    @date = Redis.current.get('date')
-
-    if @date.present?
-      arr = @date.split
-      arr.delete_at(-1)
-      arr_time = arr.delete_at(1).split(':')
-      arr_time.delete_at(-1)
-      arr << arr_time.join(':')
-      @date = arr.join('T')
-    end
-  rescue Redis::CannotConnectError
-    @changed_rate = 'Что-то пошло не так((('
-  end
+  def index; end
 
   def update
     result = UpdateRateService.new.call(admin_params)
 
+    rate_and_date
     @result = if result.success?
                 ActionCable.server.broadcast('rate', value: admin_params[:rate])
                 result.success
@@ -35,6 +23,22 @@ class AdminsController < ApplicationController
 
   def admin_params
     params.require(:admin).permit(:rate, :date)
+  end
+
+  def rate_and_date
+    @changed_rate = Redis.current.get('changed_rate')
+    @date = Redis.current.get('date')
+
+    if @date.present?
+      arr = @date.split
+      arr.delete_at(-1)
+      arr_time = arr.delete_at(1).split(':')
+      arr_time.delete_at(-1)
+      arr << arr_time.join(':')
+      @date = arr.join('T')
+    end
+  rescue Redis::CannotConnectError
+    @changed_rate = 'Что-то пошло не так((('
   end
 
 end

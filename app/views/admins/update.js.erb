@@ -1,3 +1,6 @@
 $('#message').html('<%= @result %>');
 
+<%# byebug %>
 document.getElementById("update_rate_form").reset();
+$('#admin_rate').val('<%= @changed_rate %>');
+$('#admin_date').val('<%= @date %>');
