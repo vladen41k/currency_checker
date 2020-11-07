@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Тестовое задание для FunBox
 
-Things you may want to cover:
+## Установка и запуск
 
-* Ruby version
+Клонирование и переход в папку проекта
 
-* System dependencies
+    git clone git@github.com:vladen41k/currency_checker.git && cd currency_checker
+    
+bundle install
+    
+    bundle install
+    
+Установка yarn
+    
+    yarn install --check-files
+    
+Установув redis (ubuntu 20.04)
 
-* Configuration
+    sudo apt update
+    sudo apt install redis-server
+    
+Создать базу данных
 
-* Database creation
+Старт
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    foreman start
+    
